@@ -4,7 +4,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   return (
-    <header className="sticky top-5 z-50 mx-auto flex h-18 w-full lg:max-w-6xl px-10 justify-between items-center rounded-2xl border border-border/50 bg-background/40 backdrop-blur-xl shadow-lg shadow-black/5">
+    <header className="sticky top-5 z-50 mx-auto flex h-18 w-full lg:max-w-7xl px-4 sm:px-6 lg:px-8 justify-between items-center rounded-2xl border border-border/50 bg-background/40 backdrop-blur-xl shadow-lg shadow-black/5">
       <h2 className="text-primary text-2xl font-semibold italic">A-Coin</h2>
       <div className="flex items-center gap-x-4">
         <nav>
