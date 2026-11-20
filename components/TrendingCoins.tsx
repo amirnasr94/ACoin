@@ -24,7 +24,7 @@ export default async function TrendingCoins() {
           <h2 className="text-primary text-2xl font-semibold">Top Movers</h2>
         </CardTitle>
       </CardHeader>
-      <CardContent className="max-h-100 overflow-y-auto scrollbar-none space-y-3">
+      <CardContent className="max-h-120 overflow-y-auto scrollbar-none space-y-3">
         {trendingCoins.coins.map((coin) => {
           const isTrendingUp =
             coin.item.data.price_change_percentage_24h.usd > 0;

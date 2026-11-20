@@ -1,15 +1,22 @@
-import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
 import { formatCurrency } from "@/lib/utils";
 import { fetcher } from "@/actions/fetcher";
 import { notFound } from "next/navigation";
 import { Skeleton } from "./ui/skeleton";
+import CandleStickChart from "./CandleStickChart";
 
 export default async function OverviewCoin() {
-  const coin = await fetcher<CoinDetailsData>("coins/bitcoin");
+  const [coin, coinOHLCData] = await Promise.all([
+    await fetcher<CoinDetailsData>("coins/bitcoin"),
+    await fetcher<OHLCData[]>("coins/bitcoin/ohlc", {
+      vs_currency: "usd",
+      days: "1",
+      precision: "full",
+    }),
+  ]);
 
-  if (!coin) {
+  if (!coin || !coinOHLCData) {
     return notFound();
   }
 
@@ -36,7 +43,13 @@ export default async function OverviewCoin() {
           </div>
         </div>
       </CardHeader>
-      <CardContent></CardContent>
+      <CardContent>
+        <CandleStickChart
+          data={coinOHLCData}
+          coinId="bitcoin"
+          liveInterval="1m"
+        />
+      </CardContent>
     </Card>
   );
 }
