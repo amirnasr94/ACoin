@@ -55,9 +55,9 @@ export default async function TrendingCoins() {
                 <span
                   className={cn(
                     isTrendingUp
-                      ? "text-green-600"
+                      ? "text-green-500"
                       : isTrendingDown
-                        ? "text-red-600"
+                        ? "text-red-500"
                         : "text-accent-foreground",
                   )}
                 >
